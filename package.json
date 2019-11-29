@@ -1,8 +1,10 @@
 {
-      "name": "expressapp",
+      "name": "webapp",
       "version": "1.0.0",
       "dependencies": {
-        "express": "^4.16.4"
+        "body-parser": "^1.16.0",
+        "express": "^4.14.0"
       }
     }
+    
     
