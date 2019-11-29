@@ -1,4 +1,4 @@
-Второй способ представляет чтение данных с помощью функции fs.readFile() и отправка с помощью метода response.end():
+
 
 const http = require("http");
 const fs = require("fs");
