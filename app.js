@@ -13,6 +13,12 @@ app.post("/register", urlencodedParser, function (request, response) {
 });
   app.get("/", function(request, response){
     response.send("Главная страница");
-});
 
+});
+const express = require("express");
+const app = express();
+ app.get("/products/:productId", function (request, response) {
+  response.send("productId: " + request.params["productId"])
+});
  app.listen(3000);
+
