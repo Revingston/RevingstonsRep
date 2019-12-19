@@ -5,17 +5,15 @@ const mysql = require("mysql2");
   database: "revingston",
   password: ""
 });
-  const users = [
-      ["Bob", 22],
-      ["Alice", 25],
-      ["Kate", 28]
-    ];
-    const sql = `INSERT INTO users(name, age) VALUES ?`;
-     connection.query(sql, [users], function(err, results) {
-        if(err) console.log(err);
-        console.log(results);
-    });
-    connection.end();
+  const sql = `SELECT * FROM users`;
+ 
+connection.query(sql, function(err, results) {
+    if(err) console.log(err);
+    console.log(results);
+});
+ 
+connection.end();
+
     
 
     
