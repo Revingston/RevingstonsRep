@@ -4,18 +4,13 @@ const mysql = require("mysql2");
   user: "root",
   database: "revingston",
   password: ""
-}).promise();
+});
+connection.query("CREATE DATABASE usersdb2",
+  function(err, results) {
+    if(err) console.log(err);
+    else console.log("База данных создана");
+});
  
-const sql = "INSERT INTO users (name, age) VALUES (?, ?)";
-const user = ["Stan", 19];
-connection.query(sql, user)
-          .then(result =>{
-            console.log(result[0]);
-          })
-          .catch(err =>{
-            console.log(err);
-          });
-
 connection.end();
 
 
