@@ -6,14 +6,16 @@ const mysql = require("mysql2");
   password: ""
 }).promise();
  
-// получение объектов
-connection.query("SELECT * FROM users")
+const sql = "INSERT INTO users (name, age) VALUES (?, ?)";
+const user = ["Stan", 19];
+connection.query(sql, user)
           .then(result =>{
-            console.log(result);
+            console.log(result[0]);
           })
           .catch(err =>{
             console.log(err);
           });
+
 connection.end();
 
 
