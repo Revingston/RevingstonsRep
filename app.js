@@ -5,15 +5,14 @@ const mysql = require("mysql2");
   database: "revingston",
   password: ""
 });
-const sql = "SELECT * FROM users";
-connection.query(sql,  function(err, results) {
+ const sql = `SELECT * FROM users WHERE name=? AND age=?`;
+const filter = ["Tom", 29];
+connection.query(sql, filter, function(err, results) {
     if(err) console.log(err);
-    const users = results;
-    for(let i=0; i < users.length; i++){
-      console.log(users[i].name);
-    }
+    console.log(results);
 });
  connection.end();
+
 
 
     
