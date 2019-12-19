@@ -5,16 +5,13 @@ const mysql = require("mysql2");
   database: "revingston",
   password: ""
 });
- const sql = `create table if not exists users(
-      id int primary key auto_increment,
-      name varchar(255) not null,
-      age int not null
-    )`;
-     connection.query(sql, function(err, results) {
-        if(err) console.log(err);
-        else console.log("Таблица создана");
-    });
-    connection.end();
+  const sql = `INSERT INTO users(name, age) VALUES('Sam', 31)`;
+ connection.query(sql, function(err, results) {
+    if(err) console.log(err);
+    console.log(results);
+});
+ connection.end();
+
     
 
 
