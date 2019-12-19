@@ -1,36 +1,19 @@
 const mysql = require("mysql2");
-const pool = mysql.createPool({
-        connectionLimit: 5,
-        host: "localhost",
-        user: "root",
-     database: "revingston",    
-    password: ""
-       
-    }).promise();
-     pool.execute("UPDATE users SET age=age+1 WHERE name=?", ["Stan"]) // изменение объектов
-        .then(result =>{ 
-          console.log(result[0]);
-          return pool.execute("SELECT * FROM users"); // получение объектов    })
-        then(result =>{
-          console.log(result[0]);
-          pool.end();    })
-        .then(()=>{
-          console.log("пул закрыт");    })
-        .catch(function(err) {
-          console.log(err.message);    });
-     connection.end();
-
-    
-
-
-
-
-
-    
-
-    
-
-
-
-        
-    
+const express = require("express");
+const bodyParser = require("body-parser");
+ const app = express();
+const urlencodedParser = bodyParser.urlencoded({extended: false});
+ const pool = mysql.createPool({
+  connectionLimit: 5,
+  host: "localhost",
+  user: "root",
+  database: "revingston",
+  password: "123456" });
+ app.set("view engine", "hbs");
+ // получение списка пользователей
+app.get("/", function(req, res){
+    pool.query("SELECT * FROM users", function(err, data) {
+      if(err) return console.log(err);
+      res.render("index.hbs", {
+          users: data       });     });  });
+connection.end();
