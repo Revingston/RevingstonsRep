@@ -5,13 +5,17 @@ const mysql = require("mysql2");
   database: "revingston",
   password: ""
 });
-connection.query("CREATE DATABASE usersdb2",
-  function(err, results) {
-    if(err) console.log(err);
-    else console.log("База данных создана");
-});
- 
-connection.end();
+ const sql = `create table if not exists users(
+      id int primary key auto_increment,
+      name varchar(255) not null,
+      age int not null
+    )`;
+     connection.query(sql, function(err, results) {
+        if(err) console.log(err);
+        else console.log("Таблица создана");
+    });
+    connection.end();
+    
 
 
 
