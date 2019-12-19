@@ -3,19 +3,19 @@ const pool = mysql.createPool({
         connectionLimit: 5,
         host: "localhost",
         user: "root",
-        password: "", 
-        database: "revingston"
-    });
-    pool.query("SELECT * FROM users", function(err, results) {
-            if(err) console.log(err);
-            console.log(results);
-        });
-         pool.end(function(err) {
-          if (err) {
-            console.log(err.message);
-          }
-          console.log("пул закрыт");
-        });
+     database: "revingston",    
+    password: ""
+       
+    }).promise();
+ 
+    pool.execute("SELECT * FROM users")
+              .then(result =>{
+                console.log(result[0]);
+              })
+              .catch(function(err) {
+                console.log(err.message);
+              });
+    
         
 connection.end();
 
